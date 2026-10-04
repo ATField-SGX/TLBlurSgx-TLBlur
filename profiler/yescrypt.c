@@ -18,3 +18,5 @@ void profiler_run(int eid) {
   stop_single_stepping();
   printf("Done: %d (cycles = %d, code = %d, data = %d)", ret, result, code, data);
 }
+
+void profiler_destroy(int eid) { (void)eid; }

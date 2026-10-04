@@ -10,3 +10,5 @@ void profiler_setup(int eid, int e_size, void *e_start, uint64_t argc,
 
 void profiler_run(int eid) {
 }
+
+void profiler_destroy(int eid) { (void)eid; }

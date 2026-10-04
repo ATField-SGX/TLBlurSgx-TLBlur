@@ -36,3 +36,5 @@ void profiler_run(int eid) {
 
   info("RSA decode done: %d", plain);
 }
+
+void profiler_destroy(int eid) { (void)eid; }

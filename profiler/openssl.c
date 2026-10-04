@@ -21,3 +21,5 @@ void profiler_run(int eid) {
   SGX_ASSERT(ecall_run_benchmark(eid, &ret, 10, 10, res, data, code));
   stop_single_stepping();
 }
+
+void profiler_destroy(int eid) { (void)eid; }
