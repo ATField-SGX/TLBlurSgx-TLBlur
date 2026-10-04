@@ -52,16 +52,6 @@ sgx_tcrypto = declare_dependency(link_args : '-lsgx_tcrypto', dependencies : [sg
 sgx_pthread = declare_dependency(link_args : '-lsgx_pthread', dependencies : [sgx_t])
 sgx_tcxx = declare_dependency(link_args : '-lsgx_tcxx', dependencies : [sgx_t])
 
-# HACK: Use a different archive for the instrumented tlibc
-sgx_tstdc_tlblur = declare_dependency(link_args : '-lsgx_tstdc_tlblur', dependencies : [sgx_t])
-
-if not sgx_tstdc_tlblur.found()
-  message('Instrumented tstdc not found, falling back to default tstdc!')
-  sgx_tstdc_tlblur = sgx_tstdc
-endif
-
-sgx_tstdc_tlblur = sgx_tstdc
-
 sgx_ssl = get_option('sgx_ssl')
 sgx_ssl_path = sgx_ssl
 sgx_ssl_include = include_directories(sgx_ssl / 'include')
@@ -82,13 +72,6 @@ sgx_tsgxssl = declare_dependency(
 )
 sgx_tsgxssl_crypto = declare_dependency(link_args : '-lsgx_tsgxssl_crypto', dependencies : [sgx_ssl])
 sgx_tsgxssl_crypto_tlblur = declare_dependency(link_args : '-lsgx_tsgxssl_crypto_tlblur', dependencies : [sgx_ssl])
-
-if not sgx_tsgxssl_crypto_tlblur.found()
-  message('Instrumented tsgxssl_crypto not found, falling back to default!')
-  sgx_tsgxssl_crypto_tlblur = sgx_tsgxssl_crypto
-else
-  message('Found TLBlur OpenSSL')
-endif
 
 bolt = find_program('bolt')
 objcopy = find_program('llvm-objcopy')
