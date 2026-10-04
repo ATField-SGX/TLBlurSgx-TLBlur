@@ -48,13 +48,11 @@ SECTIONS
   {
     KEEP (*(SORT_NONE(.init)))
   }
-	  _srx1 = .;
   .plt            : { *(.plt) *(.iplt) }
 .plt.got        : { *(.plt.got) }
 .plt.sec        : { *(.plt.sec) }
   .text           :
   {
-	  _srx = .;
     *(.text.unlikely .text.*_unlikely .text.unlikely.*)
     *(.text.exit .text.exit.*)
     *(.text.startup .text.startup.*)
@@ -68,14 +66,12 @@ SECTIONS
   .tlblur.text    :
   {
     *(.tlblur.text)
-    _erx = .;
     *(.tlblur.endtext)
   }
   .fini           :
   {
     KEEP (*(SORT_NONE(.fini)))
   }
-	_erx1 = .;
   PROVIDE (__etext = .);
   PROVIDE (_etext = .);
   PROVIDE (etext = .);
@@ -83,10 +79,8 @@ SECTIONS
   /* Adjust the address for the rodata segment.  We want to adjust up to
      the same address within the page on the next page up.  */
   . = SEGMENT_START("rodata-segment", ALIGN(CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 1)));
-  _sro = .;
   .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
   .rodata1        : { *(.rodata1) }
-  _ero = .;
   .eh_frame_hdr   : { *(.eh_frame_hdr) *(.eh_frame_entry .eh_frame_entry.*) }
   .eh_frame       : ONLY_IF_RO { KEEP (*(.eh_frame)) *(.eh_frame.*) }
   .gcc_except_table   : ONLY_IF_RO { *(.gcc_except_table .gcc_except_table.*) }
