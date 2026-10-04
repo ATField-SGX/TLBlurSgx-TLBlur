@@ -1,12 +1,14 @@
 [submodule "llvm/llvm-project"]
 	path = llvm/llvm-project
-	url = https://github.com/TLBlur-SGX/llvm-project.git
+	url = https://github.com/ATField-SGX/TLBlurSgx-llvmProject.git
+	branch = main
 [submodule "enclaves/wolfssl/Enclave/wolfssl"]
 	path = enclaves/wolfssl/Enclave/wolfssl
 	url = https://github.com/wolfSSL/wolfssl.git
 [submodule "sgx-step"]
 	path = sgx-step
-	url = https://github.com/TLBlur-SGX/sgx-step.git
+	url = https://github.com/ATField-SGX/TLBlurSgx-sgxStep.git
+	branch = main
 [submodule "enclaves/openssl/intel-sgx-ssl"]
 	path = enclaves/openssl/intel-sgx-ssl
 	url = https://github.com/TLBlur-SGX/intel-sgx-ssl.git

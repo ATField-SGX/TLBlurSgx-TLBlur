@@ -24,7 +24,7 @@ Prerequisites:
 Make sure to clone the repository with all its submodules:
 
 ```sh
-$ git clone --recurse-submodules https://github.com/TLBlur-SGX/tlblur.git
+$ git clone --recurse-submodules https://github.com/ATField-SGX/TLBlur.git
 ```
 
 ### Build everything at once
