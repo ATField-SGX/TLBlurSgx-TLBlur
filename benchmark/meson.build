@@ -4,7 +4,7 @@ foreach e : built_enclaves
     'lib/' + e['name'] + '.c',
     e['untrusted_edl'],
     link_with : [test_common, e['untrusted_lib'], sgx_step], 
-    dependencies : [sgx_urts, sgx_uae_service, sgx_usgxssl],
+    dependencies : [sgx_urts, sgx_uae_service] + e.get('untrusted_deps', []),
     include_directories : ['../enclaves/common', '../sgx-step', './include'],
     install : true,
     c_args : c_args,

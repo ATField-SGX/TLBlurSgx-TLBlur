@@ -7,4 +7,6 @@ enclaves += {
   'include': include_directories('Enclave'),
   'tlblur_deps': [sgx_pthread, sgx_tcxx, sgx_tsgxssl_crypto_tlblur, sgx_tsgxssl],
   'base_deps': [sgx_pthread, sgx_tcxx, sgx_tsgxssl_crypto, sgx_tsgxssl],
+  # encl.edl imports sgx_tsgxssl.edl, so the untrusted bridge is required here.
+  'untrusted_deps': [sgx_usgxssl],
 }

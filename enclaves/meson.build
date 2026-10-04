@@ -244,7 +244,7 @@ foreach e : enclaves
   exe = executable('test-' + e['name'], e['untrusted_sources'], 
     untrusted_edl,
     link_with : [test_common, untrusted, sgx_step], 
-    dependencies : [sgx_urts, sgx_uae_service, sgx_usgxssl],
+    dependencies : [sgx_urts, sgx_uae_service] + e.get('untrusted_deps', []),
     include_directories : ['./common', '../sgx-step'],
     install : true,
     c_args : c_args,
