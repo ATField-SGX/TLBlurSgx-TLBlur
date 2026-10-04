@@ -1,9 +1,9 @@
 #ifndef TLBLUR_H
 #define TLBLUR_H
 
-#include <sgx_trts.h>
+#include <sgx_trts_aex.h>
 
-int tlblur_enable(uint64_t vtlb_size);
-uint64_t tlblur_disable();
+sgx_status_t tlblur_enable(uint64_t vtlb_size);
+sgx_status_t tlblur_disable(void);
 
 #endif // TLBLUR_H
