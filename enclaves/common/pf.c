@@ -33,7 +33,7 @@ void fault_handler_wrapper (int signo, siginfo_t * si, void  *ctx)
 void register_fault_handler(fault_handler_t cb)
 {
   struct sigaction act, old_act;
-  memset(&act, sizeof(sigaction), 0);
+  memset(&act, 0, sizeof(act));
 
   /* Specify handler with signinfo arguments */
   act.sa_sigaction = fault_handler_wrapper;
