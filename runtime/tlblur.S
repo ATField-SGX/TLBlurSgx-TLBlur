@@ -9,6 +9,10 @@ tlblur_pam_update:
         # %rdi = ((%rdi - <enclave base>) >> 9) & (<size> - 1)
         lea     __ImageBase(%rip), %rax
         sub     %rax, %rdi
+        # Byte offset from the enclave base. A host pointer wraps to a
+        # value past g_enclave_size. Do not record that as a page.
+        cmpq    g_enclave_size(%rip), %rdi
+        jae     .Ltlblur_pam_outside
         shr     $12, %rdi
         shl     $3, %rdi
         and     $__tlblur_pam_size - 1, %rdi
@@ -25,6 +29,8 @@ tlblur_pam_update:
 
         incq    __tlblur_counter(%rip)
 
+        ret
+.Ltlblur_pam_outside:
         ret
 
         .data
