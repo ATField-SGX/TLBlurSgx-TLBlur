@@ -80,7 +80,8 @@ Prerequisites:
 
 1. (optional) enable or disable OpenSSL benchmark in `enclaves/meson.build` by (un)commenting the `subdir('openssl')` line
   - Binary rewriting of OpenSSL can take a very long time (up to 1 hour)
-2. Run `./configure_build.sh` to configure the meson build directory
+2. Run `./configure_build.sh` to configure the meson build directory.
+   `meson-clang.ini` names `clang`, `lld`, `llvm-bolt` and `llvm-objcopy` without absolute paths. The script puts `$TLBLUR_LLVM/bin`, or `./llvm/install/bin` when that directory exists, first on `PATH`. Meson stores the paths it finds in the build directory.
 3. Run `ninja -C build install` to build and install enclaves in `$PWD/install`
 
 ### Benchmarking tool
